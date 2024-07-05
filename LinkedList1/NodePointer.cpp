@@ -66,5 +66,6 @@ int main()
 
     insertAtEnd(a,100);
     display(a);
+    display(a);
     return 0;
 }
