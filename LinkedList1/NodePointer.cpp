@@ -67,5 +67,7 @@ int main()
     insertAtEnd(a,100);
     display(a);
     display(a);
+    swap(a->val,d->val);
+    display(a);
     return 0;
 }
