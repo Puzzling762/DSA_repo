@@ -46,25 +46,32 @@ Node* reverse(Node* head){
             slow=slow->next;
             fast=fast->next->next;
         }
-        Node* fir=head;
-        Node* sec=slow;
-        Node * ans=new Node(0);
-        Node* t=ans;
-        int c =1;
-        while(sec!=NULL){
-            if(c%2!=0){
-                t->next=fir;
-                t=t->next;
-                fir=fir->next;
-            }
-            else{
-                t->next=sec;
-                t=t->next;
-                sec=sec->next;
-            }
-            c++;
+        Node*b =reverse(slow->next);
+        Node* a=head;
+        slow->next=NULL;
+
+        Node* c=new Node(100);
+        Node* tempc=c;
+        Node* tempa=a;
+        Node* tempb=b;
+
+        while(tempa!=NULL && tempb!=NULL){
+            tempc->next=tempa;
+            tempa=tempa->next;
+            tempc=tempc->next;
+
+            tempc->next=tempb;
+            tempb=tempb->next;
+            tempc=tempc->next;
         }
-        return ans->next;
+        if(tempa!=NULL){
+            tempc->next=tempa;
+        }
+        else if(tempb!=NULL){
+            tempc->next=tempb;
+        }
+        // tempc->next=NULL;
+        return c->next;
     }
 
 int main()
